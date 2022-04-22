@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DocFix</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <!-- <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top justify-content-between d-flex">
+      <div><a class="navbar-brand" href="#">DocFix</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </div>
+        
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav right">
+            <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
+            <a class="nav-item nav-link" href=" url_for('summarize') ">Text Summarization</a>
+            <a class="nav-item nav-link" href=" url_for('sentiment') ">Sentiment Analysis</a>
+            <a class="nav-item nav-link" href=" url_for('toContent') ">Content Downloader</a>
+            <a class="nav-item nav-link" href=" url_for('toContent') ">Keyword Finder</a>
+          </div>
+        </div>
+      </nav> -->
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+        <div class="d-flex flex-grow-1">
+            <span class="w-100 d-lg-none d-block"><!-- hidden spacer to center brand on mobile --></span>
+            <a class="navbar-brand d-none d-lg-inline-block" href="{{ url_for('home') }}">
+                DocFix
+            </a>
+            <!-- <a class="navbar-brand-two mx-auto d-lg-none d-inline-block" href="#">
+                <img src="//via.placeholder.com/40?text=LOGO" alt="logo">
+            </a> -->
+            <div class="w-100 text-right">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+        </div>
+        <div class="collapse navbar-collapse flex-grow-1 text-right" id="myNavbar">
+            <ul class="navbar-nav ml-auto flex-nowrap">
+                <li class="nav-item">
+                    <a href="{{ url_for('summarize') }}" class="nav-link m-2 menu-item nav-active">Text Summarization</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ url_for('sentiment') }}" class="nav-link m-2 menu-item">Sentiment Analysis</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ url_for('getData') }}" class="nav-link m-2 menu-item">Content Downloader</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ url_for('getKW') }}" class="nav-link m-2 menu-item">Keyword Finder</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+      <!-- <div class="header">
+        <h1>DocFix: The one website for all your document needs</h1>
+      </div> -->
+      <!-- <div class="tile">
+        <a class='feature' href="http://">
+          <div class="title">
+            Text Summarization
+          </div>
+          <div class="description">
+            Text summarization is the process of turning larger documents into shorter and precise paragraphs or sentences. The process brings out information that is crucial, and also ensures that the meaning of the paragraph stays the same.
+          </div>
+        </a>
+      </div> 
+     
+      <div class="tile">
+          <a class='feature' href="http://">
+          <div class="title">
+            Sentiment Analysis
+          </div>
+          <div class="description">
+            Sentiment Analysis is a feature which determining whether a piece of writing is positive or negetive. It also gives the percent of its surety for the specific passage.
+          </div>
+        </a>
+        </div> 
+
+      <div class="tile">
+          <a class='feature' href="http://">
+          <div class="title">
+            Title Generator
+          </div>
+          <div class="description">
+            This feature generates a title which is most suitable for the passage. 
+          </div>
+        </a>
+        </div> 
+
+        <div class="tile">
+          <a class='feature' href="http://">
+          <div class="title">
+            Keyword Finder
+          </div>
+          <div class="description">
+            Keywords are used a lot for online marketing and this feature will help you find the all the important keywords and their frequencies in the passage.
+          </div>
+        </a>
+        </div>  -->
+     
+
+<section class="feature-options" id="feature-options">
+  <div class="max-width">
+              <!-- <h2 class="title">Scores</h2> -->
+    <div class="feature-content">
+      <a id='link' href="{{url_for('summarize')}}" style="text-decoration:none">
+      <div class="card">
+        <div class="box">
+                          <!-- <i class="fas fa-envelope-open-text"></i> -->
+          <div class="text">Text Summarization</div>
+          <div class="content">
+          Text summarization is the process of turning larger documents into shorter and precise paragraphs or sentences. The process brings out information that is crucial, and also ensures that the meaning of the paragraph stays the same.
+          </div>
+          <button>Try it out</button>
+        </div>
+      </div>
+    </a>
+    <a id='link' href="{{url_for('sentiment')}}" style="text-decoration:none">
+      <div class="card">
+        <div class="box">
+                          <!-- <i class="far fa-file-alt"></i> -->
+          <div class="text">Sentiment Analysis</div>
+          <div class="content">
+          Sentiment Analysis is a feature which determining whether a piece of writing is positive or negetive. It also gives the percent of its surety for the specific passage.
+          </div>
+          <button>Try it out</button>
+        </div>
+      </div>
+    </a>
+    <a id='link' href="{{url_for('getData')}}" style="text-decoration:none">
+      <div class="card">
+        <div class="box">
+                    <!-- <i class="far fa-file-alt"></i> -->
+          <div class="text">Content Downloader</div>
+          <div class="content">
+          This helps you save the relevant content of the given webpage on your local computer. No more hassle of copy pasting information from sites for research.  
+          </div>
+          <button>Try it out</button>
+        </div>
+      </div>
+    </a>
+    <a id='link' href="{{url_for('getKW')}}" style="text-decoration:none">
+      <div class="card">
+        <div class="box">
+              <!-- <i class="far fa-file-alt"></i> -->
+          <div class="text">Keyword Finder</div>
+          <div class="content">
+          Keywords are used a lot for online marketing and this feature will help you find all the important keywords and their frequencies in your passage.
+          </div>
+          <button>Try it out</button>
+        </div>
+      </div>
+      </a>
+    </div>
+  </div>
+</section>
+     
+     
+
+      
+    
+</body>
+</html>

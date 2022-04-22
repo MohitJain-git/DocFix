@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/keywordcss.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='js/runtime.js') }}">
+
+{% block head %}
+    <title>DocFix</title>
+{% endblock %}
+{% block body %}
+
+<div class="login">
+    <h1 id='title'>Keyword Finder</h1>
+    <div class='container'>
+        <div class='flex-item2'>
+            <h2>Input Text</h2>
+
+            <!-- Main Input For Receiving Query to our ML -->
+            <form action="{{ url_for('keywordfinder')}}" method="post">
+    	
+            <textarea name="text" cols="40" rows="10" placeholder= "{{input}}" required="required"></textarea>
+            <button type="submit" class="btn btn-primary btn-block btn-large">Find Keywords</button>
+            </form>
+        </div>
+        <div class='flex-item1'>
+            <h2>Keywords</h2>    
+               
+    
+        <!-- {% for n in keywords %}
+        {% if n==keywords[0] %}
+        {{n}}
+        {% else %}
+        ,<br> {{n}}
+        {% endif %}
+    {% endfor %} -->
+
+    <ol>
+        <!-- For loop logic of jinja template -->
+        {%for i in keywords%}
+          
+    <li class="no-center">{{i}}</li>
+        {%endfor%}
+          
+        </ol>
+       
+    
+            
+        </div>
+    </div>
+</div>
+<a class=" homebtn " href="{{ url_for('home') }}">HomePage</a>
+
+{% endblock %}

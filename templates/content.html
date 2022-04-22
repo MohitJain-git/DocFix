@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style_old.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='js/runtime.js') }}">
+
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> -->
+{% block head %}
+    <title>DocFix</title>
+{% endblock %}
+{% block body %}
+
+<div class="login">
+    <h1 id='title'>Content Downloader</h1>
+    <div class='container'>
+        <div class='flex-item'>
+            <h2>Enter Website Link</h2>
+
+            <!-- Main Input For Receiving Query to our ML -->
+            <form action="{{ url_for('getData')}}" method="post">
+    	
+            <textarea name="query" cols="30" rows="10" placeholder= "{{input}}" required="required" ></textarea>
+
+            <button type="submit" class="btn btn-primary btn-block btn-large">Get Data</button>
+            </form>
+        </div>
+        <div class='flex-item'>
+            {% if data %} 
+            <h2>Website Content</h2>          
+            <textarea name="query" cols="30" rows="10" placeholder= "{{input}}" required="required" >
+Title:  {{title}}
+
+Information:    {{ data }}</textarea>
+
+            <button class="btn btn-primary btn-block btn-large" href="{{ url_for('download_file', file_path = path) }}">Download</button>
+            {% endif %}
+        </div>
+    </div>
+</div>
+<a class=" homebtn " href="{{ url_for('home') }}">HomePage</a>
+
+{% endblock %}
